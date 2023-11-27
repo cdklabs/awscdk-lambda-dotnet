@@ -4,12 +4,12 @@
 
 ## Classes <a name="Classes" id="Classes"></a>
 
-### Hello <a name="Hello" id="awscdk-lambda-dotnet.Hello"></a>
+### Hello <a name="Hello" id="@aws-cdk/aws-lambda-dotnet.Hello"></a>
 
-#### Initializers <a name="Initializers" id="awscdk-lambda-dotnet.Hello.Initializer"></a>
+#### Initializers <a name="Initializers" id="@aws-cdk/aws-lambda-dotnet.Hello.Initializer"></a>
 
 ```typescript
-import { Hello } from 'awscdk-lambda-dotnet'
+import { Hello } from '@aws-cdk/aws-lambda-dotnet'
 
 new Hello()
 ```
@@ -23,11 +23,11 @@ new Hello()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#awscdk-lambda-dotnet.Hello.sayHello">sayHello</a></code> | *No description.* |
+| <code><a href="#@aws-cdk/aws-lambda-dotnet.Hello.sayHello">sayHello</a></code> | *No description.* |
 
 ---
 
-##### `sayHello` <a name="sayHello" id="awscdk-lambda-dotnet.Hello.sayHello"></a>
+##### `sayHello` <a name="sayHello" id="@aws-cdk/aws-lambda-dotnet.Hello.sayHello"></a>
 
 ```typescript
 public sayHello(): string
