@@ -31,12 +31,20 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+*.d.ts
+*.generated.ts
+*.js
+**/integ.*.snapshot/asset.*/
+**/bin
+**/obj
 !/.projenrc.js
 /test-reports/
 junit.xml
 /coverage/
 !/.github/workflows/build.yml
 !/.github/pull_request_template.md
+!/.prettierignore
+!/.prettierrc.json
 !/test/
 !/tsconfig.dev.json
 !/src/
@@ -52,3 +60,4 @@ tsconfig.json
 !/.github/workflows/upgrade-cdklabs-projen-project-types.yml
 !/.github/workflows/upgrade.yml
 !/.github/workflows/upgrade-dev-deps.yml
+!/test/tsconfig.json

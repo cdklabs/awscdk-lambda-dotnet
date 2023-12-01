@@ -13,6 +13,8 @@
 /.github/workflows/upgrade.yml linguist-generated
 /.gitignore linguist-generated
 /.npmignore linguist-generated
+/.prettierignore linguist-generated
+/.prettierrc.json linguist-generated
 /.projen/** linguist-generated
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
@@ -20,5 +22,6 @@
 /API.md linguist-generated
 /LICENSE linguist-generated
 /package.json linguist-generated
+/test/tsconfig.json linguist-generated
 /tsconfig.dev.json linguist-generated
 /yarn.lock linguist-generated
