@@ -8,7 +8,7 @@ export function getDotNetLambdaTools(): boolean {
     if (dotnet.status !== 0 || dotnet.error) {
       return false;
     }
-    return false;
+    return true;
   } catch (err) {
     return false;
   }

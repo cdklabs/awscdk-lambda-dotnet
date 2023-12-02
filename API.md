@@ -1077,6 +1077,7 @@ const bundlingOptions: BundlingOptions = { ... }
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.dockerImage">dockerImage</a></code> | <code>aws-cdk-lib.DockerImage</code> | A custom bundling Docker image. |
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.environment">environment</a></code> | <code>{[ key: string ]: string}</code> | Environment variables defined when go runs. |
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.forcedDockerBundling">forcedDockerBundling</a></code> | <code>boolean</code> | Force bundling in a Docker container even if local bundling is possible. |
+| <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.msbuildParameters">msbuildParameters</a></code> | <code>string[]</code> | Arguments passed to the `dotnet publish` command. |
 
 ---
 
@@ -1179,6 +1180,18 @@ public readonly forcedDockerBundling: boolean;
 - *Default:* false
 
 Force bundling in a Docker container even if local bundling is possible.
+
+---
+
+##### `msbuildParameters`<sup>Optional</sup> <a name="msbuildParameters" id="@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.msbuildParameters"></a>
+
+```typescript
+public readonly msbuildParameters: string[];
+```
+
+- *Type:* string[]
+
+Arguments passed to the `dotnet publish` command.
 
 ---
 
