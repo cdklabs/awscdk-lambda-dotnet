@@ -1,5 +1,5 @@
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-import { DependencyType, JsonFile } from 'projen';
+import { DependencyType, JsonFile, JsonPatch } from 'projen';
 
 const project = new CdklabsConstructLibrary({
   author: 'AWS',
@@ -67,5 +67,19 @@ new JsonFile(project, 'test/tsconfig.json', {
     include: ['./**/integ.*.ts'],
   },
 });
+
+const buildWorkflow = project.github?.workflows.find(
+  (wf) => wf.name === 'build'
+);
+buildWorkflow?.file?.patch(
+  JsonPatch.add('/jobs/build/steps/2', {
+    uses: 'actions/setup-dotnet@v3',
+    with: { 'dotnet-version': '7.x' },
+  }),
+  JsonPatch.add('/jobs/build/steps/3', {
+    name: 'Install Lambda Tools',
+    run: 'dotnet tool install -g Amazon.Lambda.Tools',
+  })
+);
 
 project.synth();
