@@ -64,11 +64,13 @@ export class Bundling implements cdk.BundlingOptions {
   constructor(private readonly props: BundlingProps) {
     Bundling.runsLocally = Bundling.runsLocally ?? getDotNetLambdaTools();
 
-    const { solutionDir } = props;
+    const { solutionDir, projectDir } = props;
     this.relativeProjectPath = path.relative(
-      solutionDir,
-      path.resolve(props.projectDir)
+      path.resolve(solutionDir),
+      path.resolve(projectDir)
     );
+    this.relativeProjectPath =
+      this.relativeProjectPath === '' ? '.' : this.relativeProjectPath;
 
     this.msbuildParameters = props.msbuildParameters ?? [];
     if (props.runtime.family === RuntimeFamily.OTHER) {

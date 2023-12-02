@@ -72,13 +72,9 @@ const buildWorkflow = project.github?.workflows.find(
   (wf) => wf.name === 'build'
 );
 buildWorkflow?.file?.patch(
-  JsonPatch.add('/jobs/build/steps/2', {
-    uses: 'actions/setup-dotnet@v3',
-    with: { 'dotnet-version': '7.x' },
-  }),
   JsonPatch.add('/jobs/build/steps/3', {
-    name: 'Install Lambda Tools',
-    run: 'dotnet tool install -g Amazon.Lambda.Tools',
+    name: 'Install AWS Lambda Tools',
+    run: 'dotnet tool update  -g Amazon.Lambda.Tools --version 5.9.0',
   })
 );
 

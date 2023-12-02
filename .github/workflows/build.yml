@@ -26,13 +26,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 7.x
-      - name: Install Lambda Tools
-        run: dotnet tool install -g Amazon.Lambda.Tools
       - name: Install dependencies
         run: yarn install --check-files
+      - name: Install AWS Lambda Tools
+        run: dotnet tool update  -g Amazon.Lambda.Tools --version 5.9.0
       - name: build
         run: npx projen build
       - name: Find mutations
