@@ -110,7 +110,7 @@ export class DotNetFunction extends lambda.Function {
     }
     if (
       runtime.family === lambda.RuntimeFamily.OTHER &&
-      architecture?.name !== process.arch
+      architecture?.name !== lambdaArchitecture(process.arch).name
     ) {
       throw new Error(
         `Unsupported architecture '${runtime.name}'. Only '${process.arch}' architure is supported for provided runtimes.`
