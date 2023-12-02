@@ -24,6 +24,7 @@ const project = new CdklabsConstructLibrary({
     '**/integ.*.snapshot/asset.*/',
     '**/bin',
     '**/obj',
+    '/*.sln',
   ],
   publishToPypi: {
     distName: 'cdklabs.aws-lambda-dotnet',

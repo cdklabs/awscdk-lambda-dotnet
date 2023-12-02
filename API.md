@@ -1073,7 +1073,6 @@ const bundlingOptions: BundlingOptions = { ... }
 | --- | --- | --- |
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.assetHash">assetHash</a></code> | <code>string</code> | Specify a custom hash for this asset. |
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.assetHashType">assetHashType</a></code> | <code>aws-cdk-lib.AssetHashType</code> | Determines how the asset hash is calculated. Assets will get rebuilt and uploaded only if their hash has changed. |
-| <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.buildArgs">buildArgs</a></code> | <code>{[ key: string ]: string}</code> | Build arguments to pass when building the bundling image. |
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.commandHooks">commandHooks</a></code> | <code><a href="#@aws-cdk/aws-lambda-dotnet.ICommandHooks">ICommandHooks</a></code> | Command hooks. |
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.dockerImage">dockerImage</a></code> | <code>aws-cdk-lib.DockerImage</code> | A custom bundling Docker image. |
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.environment">environment</a></code> | <code>{[ key: string ]: string}</code> | Environment variables defined when go runs. |
@@ -1128,19 +1127,6 @@ If the asset hash is set to `SOURCE`, then only changes to the source
 directory will cause the asset to rebuild. If your go project has multiple
 Lambda functions this means that an update to any one function could cause
 all the functions to be rebuilt and uploaded.
-
----
-
-##### `buildArgs`<sup>Optional</sup> <a name="buildArgs" id="@aws-cdk/aws-lambda-dotnet.BundlingOptions.property.buildArgs"></a>
-
-```typescript
-public readonly buildArgs: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-- *Default:* no build arguments are passed
-
-Build arguments to pass when building the bundling image.
 
 ---
 

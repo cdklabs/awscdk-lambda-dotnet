@@ -58,6 +58,7 @@ export class Bundling implements cdk.BundlingOptions {
   public readonly environment?: { [key: string]: string };
   public readonly local?: cdk.ILocalBundling;
 
+  private readonly msbuildParameters: string[];
   private readonly relativeProjectPath: string;
 
   constructor(private readonly props: BundlingProps) {
@@ -68,6 +69,14 @@ export class Bundling implements cdk.BundlingOptions {
       solutionDir,
       path.resolve(props.projectDir)
     );
+
+    this.msbuildParameters = props.msbuildParameters ?? [];
+    if (props.runtime.family === RuntimeFamily.OTHER) {
+      this.msbuildParameters.push(
+        '--self-contained',
+        '/p:PublishSingleFile=true'
+      );
+    }
 
     const environment = {
       ...props.environment,
@@ -84,7 +93,6 @@ export class Bundling implements cdk.BundlingOptions {
     const bundlingCommand = this.createBundlingCommand(
       cdk.AssetStaging.BUNDLING_INPUT_DIR,
       cdk.AssetStaging.BUNDLING_OUTPUT_DIR,
-      props.runtime,
       props.architecture
     );
     this.command = ['bash', '-c', bundlingCommand];
@@ -98,7 +106,6 @@ export class Bundling implements cdk.BundlingOptions {
         this.createBundlingCommand(
           solutionDir,
           outputDir,
-          props.runtime,
           props.architecture,
           osPlatform
         );
@@ -135,7 +142,6 @@ export class Bundling implements cdk.BundlingOptions {
   public createBundlingCommand(
     inputDir: string,
     outputDir: string,
-    runtime: Runtime,
     architecture: Architecture,
     osPlatform: NodeJS.Platform = 'linux'
   ): string {
@@ -153,12 +159,9 @@ export class Bundling implements cdk.BundlingOptions {
       architecture.name,
       '--output-package',
       packageFile,
-      '--msbuild-parameters',
-      `"${
-        runtime.family === RuntimeFamily.OTHER
-          ? '--self-contained /p:AssemblyName=bootstrap'
-          : ''
-      }"`,
+      this.msbuildParameters.length > 0
+        ? `--msbuild-parameters "${this.msbuildParameters.join(' ')}"`
+        : '',
     ]
       .filter((c) => !!c)
       .join(' ');

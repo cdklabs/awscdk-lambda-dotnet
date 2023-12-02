@@ -27,13 +27,6 @@ export interface BundlingOptions {
   readonly forcedDockerBundling?: boolean;
 
   /**
-   * Build arguments to pass when building the bundling image.
-   *
-   * @default - no build arguments are passed
-   */
-  readonly buildArgs?: { [key: string]: string };
-
-  /**
    * Determines how the asset hash is calculated. Assets will
    * get rebuilt and uploaded only if their hash has changed.
    *
@@ -77,6 +70,11 @@ export interface BundlingOptions {
    * @default - do not run additional commands
    */
   readonly commandHooks?: ICommandHooks;
+
+  /**
+   * Arguments passed to the `dotnet publish` command
+   */
+  readonly msbuildParameters?: string[];
 }
 
 /**

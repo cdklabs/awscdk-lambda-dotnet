@@ -37,6 +37,7 @@ jspm_packages/
 **/integ.*.snapshot/asset.*/
 **/bin
 **/obj
+/*.sln
 !/.projenrc.js
 /test-reports/
 junit.xml

@@ -64,23 +64,58 @@ export class DotNetFunction extends lambda.Function {
     const lambdaToolsDefaults = getLambdaToolsDefaults(projectDir);
 
     // Resolve Lambda runtime from properties, aws-lambda-tools-defaults.json or default to PROVIDED_AL2
-    const runtime =
-      props.runtime ??
-      (lambdaToolsDefaults?.['function-runtime']
-        ? new lambda.Runtime(lambdaToolsDefaults['function-runtime'])
-        : lambda.Runtime.PROVIDED_AL2);
+
+    let runtime = props.runtime;
+    if (!runtime) {
+      const toolsRuntime = lambdaToolsDefaults?.['function-runtime'] as
+        | string
+        | undefined;
+      if (
+        toolsRuntime &&
+        (toolsRuntime.startsWith('dotnet') ||
+          toolsRuntime.startsWith('provided'))
+      ) {
+        const family = toolsRuntime.startsWith('dotnet')
+          ? lambda.RuntimeFamily.DOTNET_CORE
+          : lambda.RuntimeFamily.OTHER;
+        runtime = new lambda.Runtime(toolsRuntime, family);
+      } else {
+        runtime = lambda.Runtime.DOTNET_6;
+      }
+    }
     if (
       runtime.family !== lambda.RuntimeFamily.DOTNET_CORE &&
       runtime.family !== lambda.RuntimeFamily.OTHER
     ) {
-      throw new Error('Only `.NET` and `provided` runtimes are supported.');
+      throw new Error(
+        `Unsupported runtime '${runtime.name}'. Only '.NET' and 'provided' runtimes are supported.`
+      );
     }
 
-    // Resolve architecture from properties, aws-lambda-tools-defaults.json or default to X86_64
-    const architecture =
-      props.architecture ??
-      lambdaToolsDefaults?.['function-architecture'] ??
-      lambda.Architecture.X86_64;
+    // Resolve architecture from properties, aws-lambda-tools-defaults.json, get current processor architect for provided runtimes
+    // or default to X86_64.
+    let architecture = props.architecture;
+    if (!architecture) {
+      const toolsArchitecture = lambdaToolsDefaults?.[
+        'function-architecture'
+      ] as string | undefined;
+      toolsArchitecture;
+      if (toolsArchitecture) {
+        architecture = lambdaArchitecture(toolsArchitecture);
+      } else if (runtime.family === lambda.RuntimeFamily.OTHER) {
+        architecture = lambdaArchitecture(process.arch);
+      } else {
+        architecture = lambda.Architecture.X86_64;
+      }
+    }
+    if (
+      runtime.family === lambda.RuntimeFamily.OTHER &&
+      architecture?.name !== process.arch
+    ) {
+      throw new Error(
+        `Unsupported architecture '${runtime.name}'. Only '${process.arch}' architure is supported for provided runtimes.`
+      );
+    }
 
     // Resolve solution directory from property.
     // If is file, than use the folder else find traverse parent folders of projectDir to find solution file.
@@ -138,4 +173,10 @@ export class DotNetFunction extends lambda.Function {
       handler,
     });
   }
+}
+
+function lambdaArchitecture(architecture: string): lambda.Architecture {
+  return architecture === 'arm64'
+    ? lambda.Architecture.ARM_64
+    : lambda.Architecture.X86_64;
 }
