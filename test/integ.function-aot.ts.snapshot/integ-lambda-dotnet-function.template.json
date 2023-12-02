@@ -38,7 +38,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "8027047c34cb8456ffcfe8be4f5e1c163b82dd182e8f3e44a06a7c7bdf01e54a.zip"
+     "S3Key": "3afcdc2564c22c22f2e8c7c164709f382276a3bb3c0e5707193d96f9eb2be352.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -47,7 +47,7 @@
      ]
     },
     "Architectures": [
-     "arm64"
+     "x86_64"
     ],
     "Handler": "LambdaHandler",
     "Runtime": "provided.al2"
