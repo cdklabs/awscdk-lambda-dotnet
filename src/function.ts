@@ -163,6 +163,7 @@ export class DotNetFunction extends lambda.Function {
     super(scope, id, {
       ...props,
       runtime,
+      architecture,
       code: Bundling.bundle({
         ...(props.bundling ?? {}),
         runtime,
