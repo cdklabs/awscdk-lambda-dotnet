@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/960bb8d75f8af9a1503fdfb155f6340a299e880f48c7151b148ba933dc6d1c13.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0043fff0c2c34c920dc983d1f18bea24316ef916bf37ef6043f0c00b90b2a6ca.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -88,7 +88,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6069ff106ccb598efaaed5b66247af81cff2f6c2fe05120ba295baaea57ef962.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/8c55ad51b368700d753e1e90180c9097c984bbed79b664d343212742b08a0e64.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -117,16 +117,10 @@
             "data": "LambdaInvokece74e9560f1fda89c7913fc5a3d498a1InvokeB79DA780"
           }
         ],
-        "/lambda-dotnet-docker/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertEqualsLambdainvoke/Default/Default": [
+        "/lambda-dotnet-docker/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertionResults": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "LambdaInvokece74e9560f1fda89c7913fc5a3d498a1AssertEqualsLambdainvoke9373542F"
-          }
-        ],
-        "/lambda-dotnet-docker/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertEqualsLambdainvoke/AssertionResults": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "AssertionResultsAssertEqualsLambdainvoke"
+            "data": "AssertionResultsLambdaInvokece74e9560f1fda89c7913fc5a3d498a1"
           }
         ],
         "/lambda-dotnet-docker/DefaultTest/DeployAssert/SingletonFunction1488541a7b23466481b69b4408076b81/Role": [

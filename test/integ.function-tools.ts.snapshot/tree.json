@@ -105,7 +105,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "adf9268f6b37fde2befe0a9a166f67f971349bb6e9b2c09876129de005d21b38.zip"
+                      "s3Key": "46d85a2772b609cd8607307e9978d745f48ba950ba01f172447bef2a8ae4fb42.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -113,6 +113,9 @@
                         "Arn"
                       ]
                     },
+                    "architectures": [
+                      "x86_64"
+                    ],
                     "handler": "LambdaHandler::LambdaHandler.Function::FunctionHandler",
                     "runtime": "dotnet6"
                   }
@@ -215,7 +218,7 @@
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/integ-tests-alpha.AssertionsProvider",
-                          "version": "2.41.0-alpha.0"
+                          "version": "2.80.0-alpha.0"
                         }
                       },
                       "Default": {
@@ -244,64 +247,18 @@
                           "version": "2.80.0"
                         }
                       },
-                      "AssertEqualsLambdainvoke": {
-                        "id": "AssertEqualsLambdainvoke",
-                        "path": "lambda-dotnet-tools/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertEqualsLambdainvoke",
-                        "children": {
-                          "AssertionProvider": {
-                            "id": "AssertionProvider",
-                            "path": "lambda-dotnet-tools/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertEqualsLambdainvoke/AssertionProvider",
-                            "children": {
-                              "AssertionsProvider": {
-                                "id": "AssertionsProvider",
-                                "path": "lambda-dotnet-tools/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertEqualsLambdainvoke/AssertionProvider/AssertionsProvider",
-                                "constructInfo": {
-                                  "fqn": "constructs.Construct",
-                                  "version": "10.0.5"
-                                }
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "@aws-cdk/integ-tests-alpha.AssertionsProvider",
-                              "version": "2.41.0-alpha.0"
-                            }
-                          },
-                          "Default": {
-                            "id": "Default",
-                            "path": "lambda-dotnet-tools/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertEqualsLambdainvoke/Default",
-                            "children": {
-                              "Default": {
-                                "id": "Default",
-                                "path": "lambda-dotnet-tools/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertEqualsLambdainvoke/Default/Default",
-                                "constructInfo": {
-                                  "fqn": "aws-cdk-lib.CfnResource",
-                                  "version": "2.80.0"
-                                }
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.CustomResource",
-                              "version": "2.80.0"
-                            }
-                          },
-                          "AssertionResults": {
-                            "id": "AssertionResults",
-                            "path": "lambda-dotnet-tools/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertEqualsLambdainvoke/AssertionResults",
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.CfnOutput",
-                              "version": "2.80.0"
-                            }
-                          }
-                        },
+                      "AssertionResults": {
+                        "id": "AssertionResults",
+                        "path": "lambda-dotnet-tools/DefaultTest/DeployAssert/LambdaInvokece74e9560f1fda89c7913fc5a3d498a1/AssertionResults",
                         "constructInfo": {
-                          "fqn": "@aws-cdk/integ-tests-alpha.EqualsAssertion",
-                          "version": "2.41.0-alpha.0"
+                          "fqn": "aws-cdk-lib.CfnOutput",
+                          "version": "2.80.0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/integ-tests-alpha.LambdaInvokeFunction",
-                      "version": "2.41.0-alpha.0"
+                      "version": "2.80.0-alpha.0"
                     }
                   },
                   "SingletonFunction1488541a7b23466481b69b4408076b81": {
@@ -363,13 +320,13 @@
             },
             "constructInfo": {
               "fqn": "@aws-cdk/integ-tests-alpha.IntegTestCase",
-              "version": "2.41.0-alpha.0"
+              "version": "2.80.0-alpha.0"
             }
           }
         },
         "constructInfo": {
           "fqn": "@aws-cdk/integ-tests-alpha.IntegTest",
-          "version": "2.41.0-alpha.0"
+          "version": "2.80.0-alpha.0"
         }
       },
       "Tree": {
