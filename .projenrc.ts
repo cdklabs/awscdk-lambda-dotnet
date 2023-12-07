@@ -1,5 +1,6 @@
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
 import { DependencyType, JsonFile, JsonPatch } from 'projen';
+import { NpmAccess } from 'projen/lib/javascript';
 
 const project = new CdklabsConstructLibrary({
   author: 'AWS',
@@ -9,7 +10,8 @@ const project = new CdklabsConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@aws-cdk/aws-lambda-dotnet',
   projenrcTs: true,
-  release: false,
+  npmAccess: NpmAccess.PUBLIC,
+  stability: 'experimental',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-lambda-dotnet.git',
   autoApproveOptions: {
     allowedUsernames: ['aws-cdk-automation', 'dependabot[bot]', 'mergify[bot]'],
@@ -39,9 +41,6 @@ const project = new CdklabsConstructLibrary({
     javaPackage: 'io.github.cdklabs.aws.lambda.dotnet',
     mavenArtifactId: 'cdklabs-aws-lambda-dotnet',
     mavenEndpoint: 'https://s01.oss.sonatype.org',
-  },
-  publishToGo: {
-    moduleName: 'github.com/cdklabs/awscdk-lambda-dotnet',
   },
 });
 
@@ -74,7 +73,7 @@ const buildWorkflow = project.github?.workflows.find(
 buildWorkflow?.file?.patch(
   JsonPatch.add('/jobs/build/steps/3', {
     name: 'Install AWS Lambda Tools',
-    run: 'dotnet tool update  -g Amazon.Lambda.Tools --version 5.9.0',
+    run: 'dotnet tool update  -g Amazon.Lambda.Tools',
   })
 );
 
