@@ -1,12 +1,13 @@
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-import { DependencyType, JsonFile, JsonPatch } from 'projen';
-import { NpmAccess } from 'projen/lib/javascript';
+//import { DependencyType } from 'projen';
+import { NpmAccess, TrailingComma } from 'projen/lib/javascript';
 
 const project = new CdklabsConstructLibrary({
   author: 'AWS',
   authorAddress: 'aws-cdk-dev@amazon.com',
   cdkVersion: '2.80.0',
-  jsiiVersion: '~5.0.0',
+  jsiiVersion: '~5.3.0',
+  typescriptVersion: '~5.3.3',
   defaultReleaseBranch: 'main',
   name: '@aws-cdk/aws-lambda-dotnet',
   projenrcTs: true,
@@ -19,6 +20,12 @@ const project = new CdklabsConstructLibrary({
   },
   autoApproveUpgrades: true,
   prettier: true,
+  prettierOptions: {
+    settings: {
+      singleQuote: true,
+      trailingComma: TrailingComma.ES5,
+    },
+  },
   gitignore: [
     '*.d.ts',
     '*.generated.ts',
@@ -42,39 +49,17 @@ const project = new CdklabsConstructLibrary({
     mavenArtifactId: 'cdklabs-aws-lambda-dotnet',
     mavenEndpoint: 'https://s01.oss.sonatype.org',
   },
-});
-
-project.package.addField('prettier', {
-  singleQuote: true,
-  semi: true,
-  trailingComma: 'es5',
-});
-project.eslint?.addRules({
-  'prettier/prettier': [
-    'error',
-    { singleQuote: true, semi: true, trailingComma: 'es5' },
+  workflowBootstrapSteps: [
+    {
+      name: 'Install AWS Lambda Tools',
+      run: 'dotnet tool update  -g Amazon.Lambda.Tools',
+    },
   ],
 });
 
-project.deps.addDependency(
+/*project.deps.addDependency(
   '@aws-cdk/integ-tests-alpha@2.80.0-alpha.0',
   DependencyType.TEST
-);
-new JsonFile(project, 'test/tsconfig.json', {
-  obj: {
-    extends: '../tsconfig.dev.json',
-    include: ['./**/integ.*.ts'],
-  },
-});
-
-const buildWorkflow = project.github?.workflows.find(
-  (wf) => wf.name === 'build'
-);
-buildWorkflow?.file?.patch(
-  JsonPatch.add('/jobs/build/steps/3', {
-    name: 'Install AWS Lambda Tools',
-    run: 'dotnet tool update  -g Amazon.Lambda.Tools',
-  })
-);
+);*/
 
 project.synth();

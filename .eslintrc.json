@@ -124,14 +124,6 @@
           "method"
         ]
       }
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "semi": true,
-        "trailingComma": "es5"
-      }
     ]
   },
   "overrides": [

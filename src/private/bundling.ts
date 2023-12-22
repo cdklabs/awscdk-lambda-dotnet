@@ -8,8 +8,8 @@ import {
   Runtime,
   RuntimeFamily,
 } from 'aws-cdk-lib/aws-lambda';
-import { BundlingOptions } from './types';
 import { exec, getDotNetLambdaTools } from './util';
+import { BundlingOptions } from '../types';
 
 /**
  * Options for bundling

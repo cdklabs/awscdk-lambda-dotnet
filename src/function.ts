@@ -2,9 +2,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
-import { Bundling } from './bundling';
+import { Bundling } from './private/bundling';
+import { findUp, getLambdaToolsDefaults } from './private/util';
 import { BundlingOptions } from './types';
-import { findUp, getLambdaToolsDefaults } from './util';
 
 /**
  * Properties for a .NET Function
