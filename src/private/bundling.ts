@@ -67,7 +67,7 @@ export class Bundling implements cdk.BundlingOptions {
     const { solutionDir, projectDir } = props;
     this.relativeProjectPath = path.relative(
       path.resolve(solutionDir),
-      path.resolve(projectDir)
+      path.resolve(projectDir),
     );
     this.relativeProjectPath =
       this.relativeProjectPath === '' ? '.' : this.relativeProjectPath;
@@ -76,7 +76,7 @@ export class Bundling implements cdk.BundlingOptions {
     if (props.runtime.family === RuntimeFamily.OTHER) {
       this.msbuildParameters.push(
         '--self-contained',
-        '/p:AssemblyName=bootstrap'
+        '/p:AssemblyName=bootstrap',
       );
     }
 
@@ -95,7 +95,7 @@ export class Bundling implements cdk.BundlingOptions {
     const bundlingCommand = this.createBundlingCommand(
       cdk.AssetStaging.BUNDLING_INPUT_DIR,
       cdk.AssetStaging.BUNDLING_OUTPUT_DIR,
-      props.architecture
+      props.architecture,
     );
     this.command = ['bash', '-c', bundlingCommand];
     this.environment = environment;
@@ -109,13 +109,13 @@ export class Bundling implements cdk.BundlingOptions {
           solutionDir,
           outputDir,
           props.architecture,
-          osPlatform
+          osPlatform,
         );
       this.local = {
         tryBundle(outputDir: string) {
           if (Bundling.runsLocally == false) {
             process.stderr.write(
-              'dotnet build cannot run locally. Switching to Docker bundling.\n'
+              'dotnet build cannot run locally. Switching to Docker bundling.\n',
             );
             return false;
           }
@@ -133,7 +133,7 @@ export class Bundling implements cdk.BundlingOptions {
               ],
               cwd: props.solutionDir,
               windowsVerbatimArguments: osPlatform === 'win32',
-            }
+            },
           );
           return true;
         },
@@ -145,7 +145,7 @@ export class Bundling implements cdk.BundlingOptions {
     inputDir: string,
     outputDir: string,
     architecture: Architecture,
-    osPlatform: NodeJS.Platform = 'linux'
+    osPlatform: NodeJS.Platform = 'linux',
   ): string {
     const pathJoin = osPathJoin(osPlatform);
 

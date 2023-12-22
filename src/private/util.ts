@@ -26,7 +26,7 @@ export function exec(cmd: string, args: string[], options?: SpawnSyncOptions) {
       throw new Error(
         `[Status ${proc.status}] stdout: ${proc.stdout
           ?.toString()
-          .trim()}\n\n\nstderr: ${proc.stderr?.toString().trim()}`
+          .trim()}\n\n\nstderr: ${proc.stderr?.toString().trim()}`,
       );
     }
     throw new Error(`${cmd} exited with status ${proc.status}`);
@@ -37,7 +37,7 @@ export function exec(cmd: string, args: string[], options?: SpawnSyncOptions) {
 
 export function findUp(
   ext: string,
-  directory: string = process.cwd()
+  directory: string = process.cwd(),
 ): string | undefined {
   const absoluteDirectory = path.resolve(directory);
 
@@ -55,7 +55,7 @@ export function findUp(
 export function getLambdaToolsDefaults(projectDir: string): any {
   const lambdaToolsDefaultsFile = path.join(
     projectDir,
-    'aws-lambda-tools-defaults.json'
+    'aws-lambda-tools-defaults.json',
   );
   if (fs.existsSync(lambdaToolsDefaultsFile)) {
     return JSON.parse(fs.readFileSync(lambdaToolsDefaultsFile, 'utf8'));

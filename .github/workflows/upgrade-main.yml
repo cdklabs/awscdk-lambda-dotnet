@@ -19,7 +19,7 @@ jobs:
         with:
           ref: main
       - name: Install AWS Lambda Tools
-        run: dotnet tool update  -g Amazon.Lambda.Tools
+        run: dotnet tool update -g Amazon.Lambda.Tools
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:

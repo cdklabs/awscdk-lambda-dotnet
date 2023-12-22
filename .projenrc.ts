@@ -1,6 +1,5 @@
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-import { DependencyType } from 'projen';
-import { NpmAccess, TrailingComma } from 'projen/lib/javascript';
+import { javascript, DependencyType } from 'projen';
 
 const project = new CdklabsConstructLibrary({
   author: 'AWS',
@@ -11,19 +10,15 @@ const project = new CdklabsConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@aws-cdk/aws-lambda-dotnet',
   projenrcTs: true,
-  npmAccess: NpmAccess.PUBLIC,
+  npmAccess: javascript.NpmAccess.PUBLIC,
   stability: 'experimental',
+  setNodeEngineVersion: false,
   repositoryUrl: 'https://github.com/cdklabs/awscdk-lambda-dotnet.git',
-  autoApproveOptions: {
-    allowedUsernames: ['aws-cdk-automation', 'dependabot[bot]', 'mergify[bot]'],
-    secret: 'GITHUB_TOKEN',
-  },
   autoApproveUpgrades: true,
   prettier: true,
   prettierOptions: {
     settings: {
       singleQuote: true,
-      trailingComma: TrailingComma.ES5,
     },
   },
   gitignore: [
@@ -52,14 +47,14 @@ const project = new CdklabsConstructLibrary({
   workflowBootstrapSteps: [
     {
       name: 'Install AWS Lambda Tools',
-      run: 'dotnet tool update  -g Amazon.Lambda.Tools',
+      run: 'dotnet tool update -g Amazon.Lambda.Tools',
     },
   ],
 });
 
 project.deps.addDependency(
   '@aws-cdk/integ-tests-alpha@2.80.0-alpha.0',
-  DependencyType.TEST
+  DependencyType.TEST,
 );
 
 project.synth();

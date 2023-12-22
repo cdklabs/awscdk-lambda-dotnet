@@ -88,7 +88,7 @@ export class DotNetFunction extends lambda.Function {
       runtime.family !== lambda.RuntimeFamily.OTHER
     ) {
       throw new Error(
-        `Unsupported runtime '${runtime.name}'. Only '.NET' and 'provided' runtimes are supported.`
+        `Unsupported runtime '${runtime.name}'. Only '.NET' and 'provided' runtimes are supported.`,
       );
     }
 
@@ -113,7 +113,7 @@ export class DotNetFunction extends lambda.Function {
       architecture?.name !== lambdaArchitecture(process.arch).name
     ) {
       throw new Error(
-        `Unsupported architecture '${runtime.name}'. Only '${process.arch}' architure is supported for provided runtimes.`
+        `Unsupported architecture '${runtime.name}'. Only '${process.arch}' architure is supported for provided runtimes.`,
       );
     }
 
@@ -126,20 +126,20 @@ export class DotNetFunction extends lambda.Function {
       if (parsedSolutionDir.ext && parsedSolutionDir.ext === '.sln') {
         if (!fs.existsSync(props.solutionDir)) {
           throw new Error(
-            `Solutions file at ${props.solutionDir} doesn't exist`
+            `Solutions file at ${props.solutionDir} doesn't exist`,
           );
         }
       } else if (
         !fs.readdirSync(solutionDir).find((file) => file.endsWith('.sln'))
       ) {
         throw new Error(
-          `Solution file (.sln) at ${props.solutionDir} doesn't exist`
+          `Solution file (.sln) at ${props.solutionDir} doesn't exist`,
         );
       }
     } else {
       const solutionFile = findUp('.sln', projectDir);
       solutionDir = path.resolve(
-        solutionFile ? path.dirname(solutionFile) : projectDir
+        solutionFile ? path.dirname(solutionFile) : projectDir,
       );
     }
 

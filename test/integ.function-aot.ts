@@ -2,7 +2,7 @@ import { IntegTest, ExpectedResult } from '@aws-cdk/integ-tests-alpha';
 import { App, CfnOutput, Stack, StackProps } from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
-import * as dotnet from '../lib';
+import * as dotnet from '../src';
 
 /*
  * Stack verification steps:
@@ -43,6 +43,6 @@ const invoke = integ.assertions.invokeFunction({
 invoke.expect(
   ExpectedResult.objectLike({
     Payload: '"Ok"',
-  })
+  }),
 );
 app.synth();
