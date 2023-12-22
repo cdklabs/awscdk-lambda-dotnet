@@ -17,7 +17,7 @@
 
 This library provides constructs for .NET Lambda functions.
 
-To use this module you will either need to have `.NET SDK` installed (`.NET 6.0` or later) or `Docker` installed.
+To use this module you will either need to have `.NET SDK` installed (`.NET 6.0` or later) with the [AWS Lambda Tools for .NET](https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html) or `Docker` installed.
 
 ## .NET Function
 
@@ -29,6 +29,22 @@ new dotnet.DotNetFunction(this, 'MyFunction', {
 });
 ```
 All other properties of `lambda.Function` are supported, see also the [AWS Lambda construct library](https://github.com/aws/aws-cdk/tree/main/packages/aws-cdk-lib/aws-lambda).
+
+### Custom Runtime and Native AOT
+
+With this construct it is possible to use s custom runtime by setting the runtime to `PROVIDED_AL2`. This allows you to run unsupported .NET runtime versions like .NET 7.0 or [Native AOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot). Setting the runtime to `PROVIDED_AL2` will instruct CDK and the AWS Lambda Tools for .NET to build your project in a Docker container based of Amazon Linux 2. An example can be found below.
+
+```ts
+new dotnet.DotNetFunction(this, 'MyFunction', {
+  projectDir: 'src/MyFunction'
+  runtime: lambda.Runtime.PROVIDED_AL2,
+  bundling: {
+    msbuildParameters: ['/p:PublishAot=true'],
+  },
+});
+```
+
+> Publishing your application with Native AOT requires you to use the same processor architecture for the Lambda function as for your build environment. Without specification, the construct automatically selects the processor architecture of the machine where CDK is building your project.
 
 ## Community Extensions
 
