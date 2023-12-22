@@ -1,6 +1,5 @@
 import * as os from 'os';
 import * as path from 'path';
-import * as cdk from 'aws-cdk-lib';
 import {
   Architecture,
   AssetCode,
@@ -8,6 +7,7 @@ import {
   Runtime,
   RuntimeFamily,
 } from 'aws-cdk-lib/aws-lambda';
+import * as cdk from 'aws-cdk-lib/core';
 import { exec, getDotNetLambdaTools } from './util';
 import { BundlingOptions } from '../types';
 
