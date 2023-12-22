@@ -37,7 +37,7 @@ With this construct it is possible to use s custom runtime by setting the runtim
 
 ```ts
 new dotnet.DotNetFunction(this, 'MyFunction', {
-  projectDir: 'src/MyFunction'
+  projectDir: 'src/MyFunction',
   runtime: lambda.Runtime.PROVIDED_AL2,
   bundling: {
     msbuildParameters: ['/p:PublishAot=true'],
