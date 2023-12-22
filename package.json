@@ -133,7 +133,7 @@
         "package": "io.github.cdklabs.aws.lambda.dotnet",
         "maven": {
           "groupId": "io.github.cdklabs",
-          "artifactId": "cdklabs-aws-lambda-dotnet"
+          "artifactId": "aws-lambda-dotnet"
         }
       },
       "python": {
@@ -141,8 +141,8 @@
         "module": "cdklabs.aws_lambda_dotnet"
       },
       "dotnet": {
-        "namespace": "Cdklabs.AWS.Lambda.DotNet",
-        "packageId": "Cdklabs.AWS.Lambda.DotNet"
+        "namespace": "Cdklabs.AwsLambdaDotnet",
+        "packageId": "Cdklabs.AwsLambdaDotnet"
       },
       "go": {
         "moduleName": "github.com/cdklabs/aws-lambda-dotnet-go"

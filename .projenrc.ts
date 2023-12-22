@@ -30,20 +30,6 @@ const project = new CdklabsConstructLibrary({
     '**/obj',
     '/*.sln',
   ],
-  publishToPypi: {
-    distName: 'cdklabs.aws-lambda-dotnet',
-    module: 'cdklabs.aws_lambda_dotnet',
-  },
-  publishToNuget: {
-    packageId: 'Cdklabs.AWS.Lambda.DotNet',
-    dotNetNamespace: 'Cdklabs.AWS.Lambda.DotNet',
-  },
-  publishToMaven: {
-    mavenGroupId: 'io.github.cdklabs',
-    javaPackage: 'io.github.cdklabs.aws.lambda.dotnet',
-    mavenArtifactId: 'cdklabs-aws-lambda-dotnet',
-    mavenEndpoint: 'https://s01.oss.sonatype.org',
-  },
   workflowBootstrapSteps: [
     {
       name: 'Install AWS Lambda Tools',
