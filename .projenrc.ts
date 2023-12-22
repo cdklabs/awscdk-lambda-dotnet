@@ -1,5 +1,5 @@
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-//import { DependencyType } from 'projen';
+import { DependencyType } from 'projen';
 import { NpmAccess, TrailingComma } from 'projen/lib/javascript';
 
 const project = new CdklabsConstructLibrary({
@@ -57,9 +57,9 @@ const project = new CdklabsConstructLibrary({
   ],
 });
 
-/*project.deps.addDependency(
+project.deps.addDependency(
   '@aws-cdk/integ-tests-alpha@2.80.0-alpha.0',
   DependencyType.TEST
-);*/
+);
 
 project.synth();

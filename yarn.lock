@@ -48,10 +48,10 @@
   optionalDependencies:
     fsevents "2.3.2"
 
-"@aws-cdk/integ-tests-alpha@latest":
-  version "2.116.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/integ-tests-alpha/-/integ-tests-alpha-2.116.0-alpha.0.tgz#98713a735788edc55ae1b055584f6d28b5917739"
-  integrity sha512-rAi0sDmurbCMJxgQ9YzNdFCb8immGrHP3QVkKqWkgvVA7f9eKjk4mAFQ9+N/6hyYxAEToHCq6ThqVmNH77Qe5w==
+"@aws-cdk/integ-tests-alpha@2.80.0-alpha.0":
+  version "2.80.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/integ-tests-alpha/-/integ-tests-alpha-2.80.0-alpha.0.tgz#d232c3885347336b9da0289c180675482c5d2a9f"
+  integrity sha512-XU5+8pqd2sUvxfyz6zluskydX1pY+NGL5jtZf2sUukkqN1PNQ/zZrQwyY6An8mCGggSwj0uMGrzItiuDKaiGuA==
 
 "@aws-cdk/service-spec-types@^0.0.36":
   version "0.0.36"
