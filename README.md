@@ -28,6 +28,7 @@ new dotnet.DotNetFunction(this, 'MyFunction', {
   projectDir: 'src/MyFunction'
 });
 ```
+
 All other properties of `lambda.Function` are supported, see also the [AWS Lambda construct library](https://github.com/aws/aws-cdk/tree/main/packages/aws-cdk-lib/aws-lambda).
 
 ### Custom Runtime and Native AOT
