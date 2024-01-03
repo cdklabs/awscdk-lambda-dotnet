@@ -1,4 +1,7 @@
-import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
+import {
+  CdklabsConstructLibrary,
+  JsiiLanguage,
+} from 'cdklabs-projen-project-types';
 import { DependencyType } from 'projen';
 
 const project = new CdklabsConstructLibrary({
@@ -15,6 +18,25 @@ const project = new CdklabsConstructLibrary({
   stability: 'experimental',
   setNodeEngineVersion: false,
   repositoryUrl: 'https://github.com/cdklabs/awscdk-lambda-dotnet.git',
+  jsiiTargetLanguages: [
+    JsiiLanguage.JAVA,
+    JsiiLanguage.PYTHON,
+    JsiiLanguage.DOTNET,
+  ],
+  publishToMaven: {
+    javaPackage: `software.amazon.awscdk.aws.lambda.dotnet`,
+    mavenGroupId: `software.amazon.awscdk`,
+    mavenArtifactId: 'aws-lambda-dotnet',
+    mavenEndpoint: 'https://s01.oss.sonatype.org',
+  },
+  publishToPypi: {
+    distName: 'aws-cdk.aws-lambda-dotnet',
+    module: 'aws_cdk.aws_lambda_dotnet',
+  },
+  publishToNuget: {
+    dotNetNamespace: 'Amazon.CDK.AwsLambdaDotnet',
+    packageId: 'Amazon.CDK.AwsLambdaDotnet',
+  },
   autoApproveUpgrades: true,
   prettier: true,
   prettierOptions: {
