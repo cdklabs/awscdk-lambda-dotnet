@@ -134,7 +134,7 @@
         "package": "software.amazon.awscdk.aws.lambda.dotnet",
         "maven": {
           "groupId": "software.amazon.awscdk",
-          "artifactId": "aws-lambda-dotnet"
+          "artifactId": "lambda-dotnet"
         }
       },
       "python": {
