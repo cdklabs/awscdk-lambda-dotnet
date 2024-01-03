@@ -34,8 +34,8 @@ const project = new CdklabsConstructLibrary({
     module: 'aws_cdk.aws_lambda_dotnet',
   },
   publishToNuget: {
-    dotNetNamespace: 'Amazon.CDK.AwsLambdaDotnet',
-    packageId: 'Amazon.CDK.AwsLambdaDotnet',
+    dotNetNamespace: 'Amazon.CDK.AWS.Lambda.DotNet',
+    packageId: 'Amazon.CDK.AWS.Lambda.DotNet',
   },
   autoApproveUpgrades: true,
   prettier: true,

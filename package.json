@@ -142,8 +142,8 @@
         "module": "aws_cdk.aws_lambda_dotnet"
       },
       "dotnet": {
-        "namespace": "Amazon.CDK.AwsLambdaDotnet",
-        "packageId": "Amazon.CDK.AwsLambdaDotnet"
+        "namespace": "Amazon.CDK.AWS.Lambda.DotNet",
+        "packageId": "Amazon.CDK.AWS.Lambda.DotNet"
       }
     },
     "tsc": {
