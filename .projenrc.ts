@@ -27,7 +27,7 @@ const project = new CdklabsConstructLibrary({
     javaPackage: `software.amazon.awscdk.aws.lambda.dotnet`,
     mavenGroupId: `software.amazon.awscdk`,
     mavenArtifactId: 'aws-lambda-dotnet',
-    mavenEndpoint: 'https://s01.oss.sonatype.org',
+    mavenEndpoint: 'https://aws.oss.sonatype.org',
   },
   publishToPypi: {
     distName: 'aws-cdk.aws-lambda-dotnet',
