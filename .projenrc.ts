@@ -1,5 +1,5 @@
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-import { javascript, DependencyType } from 'projen';
+import { DependencyType } from 'projen';
 
 const project = new CdklabsConstructLibrary({
   author: 'AWS',
@@ -9,8 +9,9 @@ const project = new CdklabsConstructLibrary({
   typescriptVersion: '~5.3.3',
   defaultReleaseBranch: 'main',
   name: '@aws-cdk/aws-lambda-dotnet',
+  private: false,
+  enablePRAutoMerge: true,
   projenrcTs: true,
-  npmAccess: javascript.NpmAccess.PUBLIC,
   stability: 'experimental',
   setNodeEngineVersion: false,
   repositoryUrl: 'https://github.com/cdklabs/awscdk-lambda-dotnet.git',
