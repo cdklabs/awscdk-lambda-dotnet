@@ -38,7 +38,6 @@ jspm_packages/
 **/bin
 **/obj
 /*.sln
-!/.projenrc.js
 /test-reports/
 junit.xml
 /coverage/
@@ -64,3 +63,4 @@ tsconfig.json
 !/.github/workflows/upgrade-cdklabs-projen-project-types-main.yml
 !/.github/workflows/upgrade-main.yml
 !/.github/workflows/upgrade-dev-deps-main.yml
+!/.projenrc.ts
