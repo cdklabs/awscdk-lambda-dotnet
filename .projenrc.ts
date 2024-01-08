@@ -11,7 +11,7 @@ const project = new CdklabsConstructLibrary({
   jsiiVersion: '~5.3.0',
   typescriptVersion: '~5.3.3',
   defaultReleaseBranch: 'main',
-  name: '@aws-cdk/aws-lambda-dotnet',
+  name: '@cdklabs/aws-lambda-dotnet',
   private: false,
   enablePRAutoMerge: true,
   projenrcTs: true,

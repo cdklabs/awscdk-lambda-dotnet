@@ -1,5 +1,5 @@
 {
-  "name": "@aws-cdk/aws-lambda-dotnet",
+  "name": "@cdklabs/aws-lambda-dotnet",
   "repository": {
     "type": "git",
     "url": "https://github.com/cdklabs/awscdk-lambda-dotnet.git"
