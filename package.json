@@ -131,19 +131,19 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "package": "software.amazon.awscdk.services.lambda.dotnet",
+        "package": "io.github.cdklabs.services.lambda.dotnet",
         "maven": {
-          "groupId": "software.amazon.awscdk",
-          "artifactId": "lambda-dotnet"
+          "groupId": "io.github.cdklabs",
+          "artifactId": "aws-lambda-dotnet"
         }
       },
       "python": {
-        "distName": "aws-cdk.aws-lambda-dotnet",
-        "module": "aws_cdk.aws_lambda_dotnet"
+        "distName": "cdklabs.aws-lambda-dotnet",
+        "module": "cdklabs.aws_lambda_dotnet"
       },
       "dotnet": {
-        "namespace": "Amazon.CDK.AWS.Lambda.DotNet",
-        "packageId": "Amazon.CDK.AWS.Lambda.DotNet"
+        "namespace": "CdkLabs.AWS.Lambda.DotNet",
+        "packageId": "CdkLabs.AWS.Lambda.DotNet"
       }
     },
     "tsc": {
