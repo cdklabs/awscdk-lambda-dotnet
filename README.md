@@ -33,7 +33,7 @@ All other properties of `lambda.Function` are supported, see also the [AWS Lambd
 
 ### Custom Runtime and Native AOT
 
-With this construct it is possible to use s custom runtime by setting the runtime to `PROVIDED_AL2`. This allows you to run unsupported .NET runtime versions like .NET 7.0 or [Native AOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot). Setting the runtime to `PROVIDED_AL2` will instruct CDK and the AWS Lambda Tools for .NET to build your project in a Docker container based of Amazon Linux 2. An example can be found below.
+With this construct it is possible to use a custom runtime by setting the runtime to `PROVIDED_AL2`. This allows you to run unsupported .NET runtime versions like .NET 7.0 or [Native AOT](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot). Setting the runtime to `PROVIDED_AL2` will instruct CDK and the AWS Lambda Tools for .NET to build your project in a Docker container based of Amazon Linux 2. An example can be found below.
 
 ```ts
 new dotnet.DotNetFunction(this, 'MyFunction', {
