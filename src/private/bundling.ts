@@ -51,7 +51,7 @@ export class Bundling implements cdk.BundlingOptions {
   }
 
   private static runsLocally?: boolean;
-  private static defaultBuildImage = 'public.ecr.aws/sam/build-dotnet7';
+  private static defaultBuildImage = 'public.ecr.aws/sam/build-dotnet8';
 
   public readonly image: cdk.DockerImage;
   public readonly command: string[];

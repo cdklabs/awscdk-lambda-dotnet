@@ -7,7 +7,7 @@ import { DependencyType } from 'projen';
 const project = new CdklabsConstructLibrary({
   author: 'AWS',
   authorAddress: 'aws-cdk-dev@amazon.com',
-  cdkVersion: '2.80.0',
+  cdkVersion: '2.129.0',
   jsiiVersion: '~5.3.0',
   typescriptVersion: '~5.3.3',
   defaultReleaseBranch: 'main',
@@ -61,7 +61,7 @@ const project = new CdklabsConstructLibrary({
 });
 
 project.deps.addDependency(
-  '@aws-cdk/integ-tests-alpha@2.80.0-alpha.0',
+  '@aws-cdk/integ-tests-alpha@2.129.0-alpha.0',
   DependencyType.TEST,
 );
 
