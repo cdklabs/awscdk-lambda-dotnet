@@ -45,6 +45,8 @@ new dotnet.DotNetFunction(this, 'MyFunction', {
 });
 ```
 
+Make sure `<AssemblyName>bootstrap</AssemblyName>` is set in the `csproj` file as this is required by the custom runtime. 
+
 > Publishing your application with Native AOT requires you to use the same processor architecture for the Lambda function as for your build environment. Without specification, the construct automatically selects the processor architecture of the machine where CDK is building your project.
 
 ## Community Extensions

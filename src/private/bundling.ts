@@ -74,10 +74,7 @@ export class Bundling implements cdk.BundlingOptions {
 
     this.msbuildParameters = props.msbuildParameters ?? [];
     if (props.runtime.family === RuntimeFamily.OTHER) {
-      this.msbuildParameters.push(
-        '--self-contained',
-        '/p:AssemblyName=bootstrap',
-      );
+      this.msbuildParameters.push('--self-contained');
     }
 
     const environment = {
