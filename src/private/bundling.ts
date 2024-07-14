@@ -85,8 +85,8 @@ export class Bundling implements cdk.BundlingOptions {
     const shouldBuildImage =
       props.forcedDockerBundling || !Bundling.runsLocally;
     this.image = shouldBuildImage
-      ? props.dockerImage ??
-        cdk.DockerImage.fromRegistry(Bundling.defaultBuildImage)
+      ? (props.dockerImage ??
+        cdk.DockerImage.fromRegistry(Bundling.defaultBuildImage))
       : cdk.DockerImage.fromRegistry('dummy'); // Do not build if we don't need to
 
     const bundlingCommand = this.createBundlingCommand(
