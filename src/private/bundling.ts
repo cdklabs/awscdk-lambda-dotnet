@@ -42,6 +42,7 @@ export class Bundling implements cdk.BundlingOptions {
         : cdk.AssetHashType.SOURCE,
       exclude: ['**/bin/', '**/obj/'],
       bundling: {
+        outputType: cdk.BundlingOutput.AUTO_DISCOVER,
         image: bundling.image,
         command: bundling.command,
         environment: bundling.environment,
@@ -164,6 +165,12 @@ export class Bundling implements cdk.BundlingOptions {
     ]
       .filter((c) => !!c)
       .join(' ');
+
+    // Skip invocation of hooks and unzip / delete commands if no hooks are registered
+    if (!this.props.commandHooks) {
+      return dotnetPackageCommand;
+    }
+
     const unzipCommand: string =
       osPlatform === 'win32'
         ? [
@@ -182,11 +189,11 @@ export class Bundling implements cdk.BundlingOptions {
         : ['rm', packageFile].filter((c) => !!c).join(' ');
 
     return chain([
-      ...(this.props.commandHooks?.beforeBundling(inputDir, outputDir) ?? []),
+      ...(this.props.commandHooks.beforeBundling(inputDir, outputDir) ?? []),
       dotnetPackageCommand,
       unzipCommand,
       deleteCommand,
-      ...(this.props.commandHooks?.afterBundling(inputDir, outputDir) ?? []),
+      ...(this.props.commandHooks.afterBundling(inputDir, outputDir) ?? []),
     ]);
   }
 }
