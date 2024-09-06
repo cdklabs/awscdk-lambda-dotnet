@@ -16,6 +16,7 @@ const project = new CdklabsConstructLibrary({
   enablePRAutoMerge: true,
   projenrcTs: true,
   stability: 'experimental',
+  repository: 'https://github.com/cdklabs/awscdk-lambda-dotnet.git',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-lambda-dotnet.git',
   jsiiTargetLanguages: [
     JsiiLanguage.JAVA,
