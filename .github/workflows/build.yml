@@ -95,7 +95,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions: {}
-    if: ${{ !needs.build.outputs.self_mutation_happened }}
+    if: "! needs.build.outputs.self_mutation_happened"
     steps:
       - uses: actions/setup-node@v4
         with:
@@ -110,27 +110,19 @@ jobs:
         continue-on-error: true
       - name: Install AWS Lambda Tools
         run: dotnet tool update -g Amazon.Lambda.Tools
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          path: .repo
+      - name: Prepare Repository
+        run: mv dist .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
-      - name: Extract build artifact
-        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
-      - name: Move build artifact out of the way
-        run: mv dist dist.old
       - name: Create js artifact
         run: cd .repo && npx projen package:js
-      - name: Collect js artifact
+      - name: Collect js Artifact
         run: mv .repo/dist dist
   package-java:
     needs: build
     runs-on: ubuntu-latest
     permissions: {}
-    if: ${{ !needs.build.outputs.self_mutation_happened }}
+    if: "! needs.build.outputs.self_mutation_happened"
     steps:
       - uses: actions/setup-java@v4
         with:
@@ -149,27 +141,19 @@ jobs:
         continue-on-error: true
       - name: Install AWS Lambda Tools
         run: dotnet tool update -g Amazon.Lambda.Tools
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          path: .repo
+      - name: Prepare Repository
+        run: mv dist .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
-      - name: Extract build artifact
-        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
-      - name: Move build artifact out of the way
-        run: mv dist dist.old
       - name: Create java artifact
         run: cd .repo && npx projen package:java
-      - name: Collect java artifact
+      - name: Collect java Artifact
         run: mv .repo/dist dist
   package-python:
     needs: build
     runs-on: ubuntu-latest
     permissions: {}
-    if: ${{ !needs.build.outputs.self_mutation_happened }}
+    if: "! needs.build.outputs.self_mutation_happened"
     steps:
       - uses: actions/setup-node@v4
         with:
@@ -187,27 +171,19 @@ jobs:
         continue-on-error: true
       - name: Install AWS Lambda Tools
         run: dotnet tool update -g Amazon.Lambda.Tools
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          path: .repo
+      - name: Prepare Repository
+        run: mv dist .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
-      - name: Extract build artifact
-        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
-      - name: Move build artifact out of the way
-        run: mv dist dist.old
       - name: Create python artifact
         run: cd .repo && npx projen package:python
-      - name: Collect python artifact
+      - name: Collect python Artifact
         run: mv .repo/dist dist
   package-dotnet:
     needs: build
     runs-on: ubuntu-latest
     permissions: {}
-    if: ${{ !needs.build.outputs.self_mutation_happened }}
+    if: "! needs.build.outputs.self_mutation_happened"
     steps:
       - uses: actions/setup-node@v4
         with:
@@ -225,19 +201,11 @@ jobs:
         continue-on-error: true
       - name: Install AWS Lambda Tools
         run: dotnet tool update -g Amazon.Lambda.Tools
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          path: .repo
+      - name: Prepare Repository
+        run: mv dist .repo
       - name: Install Dependencies
         run: cd .repo && yarn install --check-files --frozen-lockfile
-      - name: Extract build artifact
-        run: tar --strip-components=1 -xzvf dist/js/*.tgz -C .repo
-      - name: Move build artifact out of the way
-        run: mv dist dist.old
       - name: Create dotnet artifact
         run: cd .repo && npx projen package:dotnet
-      - name: Collect dotnet artifact
+      - name: Collect dotnet Artifact
         run: mv .repo/dist dist
