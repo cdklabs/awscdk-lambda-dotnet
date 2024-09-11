@@ -436,14 +436,14 @@ Environment variable options.
 ##### `addLayers` <a name="addLayers" id="@aws-cdk/aws-lambda-dotnet.DotNetFunction.addLayers"></a>
 
 ```typescript
-public addLayers(layers: ILayerVersion): void
+public addLayers(layers: ...ILayerVersion[]): void
 ```
 
 Adds one or more Lambda Layers to this Lambda function.
 
 ###### `layers`<sup>Required</sup> <a name="layers" id="@aws-cdk/aws-lambda-dotnet.DotNetFunction.addLayers.parameter.layers"></a>
 
-- *Type:* aws-cdk-lib.aws_lambda.ILayerVersion
+- *Type:* ...aws-cdk-lib.aws_lambda.ILayerVersion[]
 
 the layers to be added.
 
