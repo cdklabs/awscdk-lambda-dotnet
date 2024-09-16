@@ -34,23 +34,23 @@
   "lambdahandler909F9205": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
+    "Architectures": [
+     "x86_64"
+    ],
     "Code": {
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "a8cf4afc095cddadec8a6ad807c6bd458d3baca0dfa252ea2f39f6dfe00ec70f.zip"
+     "S3Key": "880faf7d469b3e864f4cddb11c44cc90c0dd86c2774dded5d4116afac6200cee.zip"
     },
+    "Handler": "LambdaHandler::LambdaHandler.Function::FunctionHandler",
     "Role": {
      "Fn::GetAtt": [
       "lambdahandlerServiceRoleA08D1FE8",
       "Arn"
      ]
     },
-    "Architectures": [
-     "x86_64"
-    ],
-    "Handler": "LambdaHandler::LambdaHandler.Function::FunctionHandler",
-    "Runtime": "dotnet6"
+    "Runtime": "dotnet8"
    },
    "DependsOn": [
     "lambdahandlerServiceRoleA08D1FE8"
