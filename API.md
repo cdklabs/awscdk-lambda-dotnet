@@ -2033,7 +2033,7 @@ public readonly runtime: Runtime;
 ```
 
 - *Type:* aws-cdk-lib.aws_lambda.Runtime
-- *Default:* lambda.Runtime.PROVIDED_AL2
+- *Default:* lambda.Runtime.DOTNET_8
 
 The runtime environment.
 

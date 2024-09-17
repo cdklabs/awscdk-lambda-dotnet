@@ -13,7 +13,7 @@ export interface DotNetFunctionProps extends lambda.FunctionOptions {
   /**
    * The runtime environment. Only runtimes of the .NET family and provided family are supported.
    *
-   * @default lambda.Runtime.PROVIDED_AL2
+   * @default lambda.Runtime.DOTNET_8
    */
   readonly runtime?: lambda.Runtime;
 
@@ -63,8 +63,7 @@ export class DotNetFunction extends lambda.Function {
     // Find aws-lambda-tools-defaults.json in project directory
     const lambdaToolsDefaults = getLambdaToolsDefaults(projectDir);
 
-    // Resolve Lambda runtime from properties, aws-lambda-tools-defaults.json or default to PROVIDED_AL2
-
+    // Resolve Lambda runtime from properties, aws-lambda-tools-defaults.json or default to DOTNET_8
     let runtime = props.runtime;
     if (!runtime) {
       const toolsRuntime = lambdaToolsDefaults?.['function-runtime'] as
@@ -80,7 +79,7 @@ export class DotNetFunction extends lambda.Function {
           : lambda.RuntimeFamily.OTHER;
         runtime = new lambda.Runtime(toolsRuntime, family);
       } else {
-        runtime = lambda.Runtime.DOTNET_6;
+        runtime = lambda.Runtime.DOTNET_8;
       }
     }
     if (

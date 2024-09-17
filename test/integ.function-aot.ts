@@ -16,7 +16,7 @@ class TestStack extends Stack {
 
     const fn = new dotnet.DotNetFunction(this, 'lambda-handler', {
       projectDir: 'lambda-handler-aot',
-      runtime: lambda.Runtime.PROVIDED_AL2,
+      runtime: lambda.Runtime.PROVIDED_AL2023,
       bundling: {
         msbuildParameters: ['/p:PublishAot=true'],
       },
