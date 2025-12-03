@@ -14,7 +14,7 @@ class TestStack extends Stack {
     super(scope, id, props);
 
     const fn = new lambda.DotNetFunction(this, 'lambda-handler', {
-      projectDir: 'lambda-handler',
+      projectDir: 'test/lambda-handler',
       handler: 'LambdaHandler::LambdaHandler.Function::FunctionHandler',
     });
     this.functionName = fn.functionName;
