@@ -499,7 +499,7 @@ This method may be called more than once.
 
 ---
 
-##### `isConstruct` <a name="isConstruct" id="@aws-cdk/aws-lambda-dotnet.DotNetFunction.isConstruct"></a>
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@aws-cdk/aws-lambda-dotnet.DotNetFunction.isConstruct"></a>
 
 ```typescript
 import { DotNetFunction } from '@aws-cdk/aws-lambda-dotnet'
@@ -508,20 +508,6 @@ DotNetFunction.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
-
-Use this method instead of `instanceof` to properly detect `Construct`
-instances, even when the construct library is symlinked.
-
-Explanation: in JavaScript, multiple copies of the `constructs` library on
-disk are seen as independent, completely different libraries. As a
-consequence, the class `Construct` in each copy of the `constructs` library
-is seen as a different class, and an instance of one class will not test as
-`instanceof` the other class. `npm install` will not create installations
-like this, but users may manually symlink construct libraries together or
-use a monorepo tool: in those cases, multiple copies of the `constructs`
-library can be accidentally installed, and `instanceof` will behave
-unpredictably. It is safest to avoid using `instanceof`, and using
-this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@aws-cdk/aws-lambda-dotnet.DotNetFunction.isConstruct.parameter.x"></a>
 
@@ -1295,7 +1281,7 @@ const dotNetFunctionProps: DotNetFunctionProps = { ... }
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.DotNetFunctionProps.property.bundling">bundling</a></code> | <code><a href="#@aws-cdk/aws-lambda-dotnet.BundlingOptions">BundlingOptions</a></code> | Bundling options. |
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.DotNetFunctionProps.property.handler">handler</a></code> | <code>string</code> | The name of the method within your code that Lambda calls to execute your function. |
 | <code><a href="#@aws-cdk/aws-lambda-dotnet.DotNetFunctionProps.property.runtime">runtime</a></code> | <code>aws-cdk-lib.aws_lambda.Runtime</code> | The runtime environment. |
-| <code><a href="#@aws-cdk/aws-lambda-dotnet.DotNetFunctionProps.property.solutionDir">solutionDir</a></code> | <code>string</code> | Directory containing your .sln file. |
+| <code><a href="#@aws-cdk/aws-lambda-dotnet.DotNetFunctionProps.property.solutionDir">solutionDir</a></code> | <code>string</code> | Directory containing your .sln or .slnx file. |
 
 ---
 
@@ -2062,9 +2048,9 @@ public readonly solutionDir: string;
 ```
 
 - *Type:* string
-- *Default:* the path is found by walking up parent directories searching for a `.sln` file from the location of `projectDir`. If no `.sln` file is found, the `projectDir` will be used.
+- *Default:* the path is found by walking up parent directories searching for a `.sln` or `.slnx` file from the location of `projectDir`. If no solution file is found, the `projectDir` will be used.
 
-Directory containing your .sln file.
+Directory containing your .sln or .slnx file.
 
 This will be used as the source of the volume mounted in the Docker
 container and will be the directory where it will run `dotnet build` from.

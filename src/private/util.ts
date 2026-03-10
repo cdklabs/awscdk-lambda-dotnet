@@ -36,12 +36,15 @@ export function exec(cmd: string, args: string[], options?: SpawnSyncOptions) {
 }
 
 export function findUp(
-  ext: string,
+  ext: string | string[],
   directory: string = process.cwd(),
 ): string | undefined {
   const absoluteDirectory = path.resolve(directory);
+  const extensions = Array.isArray(ext) ? ext : [ext];
 
-  const file = fs.readdirSync(absoluteDirectory).find((f) => f.endsWith(ext));
+  const file = fs
+    .readdirSync(absoluteDirectory)
+    .find((f) => extensions.some((e) => f.endsWith(e)));
   if (file) {
     return path.join(absoluteDirectory, file);
   }

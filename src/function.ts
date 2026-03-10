@@ -23,13 +23,13 @@ export interface DotNetFunctionProps extends lambda.FunctionOptions {
   readonly projectDir: string;
 
   /**
-   * Directory containing your .sln file
+   * Directory containing your .sln or .slnx file
    *
    * This will be used as the source of the volume mounted in the Docker
    * container and will be the directory where it will run `dotnet build` from.
    *
    * @default - the path is found by walking up parent directories searching for
-   * a `.sln` file from the location of `projectDir`. If no `.sln` file is found,
+   * a `.sln` or `.slnx` file from the location of `projectDir`. If no solution file is found,
    * the `projectDir` will be used.
    */
   readonly solutionDir?: string;
@@ -122,21 +122,28 @@ export class DotNetFunction extends lambda.Function {
     if (props.solutionDir) {
       solutionDir = props.solutionDir;
       const parsedSolutionDir = path.parse(props.solutionDir);
-      if (parsedSolutionDir.ext && parsedSolutionDir.ext === '.sln') {
+      if (
+        parsedSolutionDir.ext &&
+        (parsedSolutionDir.ext === '.sln' || parsedSolutionDir.ext === '.slnx')
+      ) {
         if (!fs.existsSync(props.solutionDir)) {
           throw new Error(
             `Solutions file at ${props.solutionDir} doesn't exist`,
           );
         }
       } else if (
-        !fs.readdirSync(solutionDir).find((file) => file.endsWith('.sln'))
+        !fs
+          .readdirSync(solutionDir)
+          .find(
+            (file: string) => file.endsWith('.sln') || file.endsWith('.slnx'),
+          )
       ) {
         throw new Error(
-          `Solution file (.sln) at ${props.solutionDir} doesn't exist`,
+          `Solution file (.sln or .slnx) at ${props.solutionDir} doesn't exist`,
         );
       }
     } else {
-      const solutionFile = findUp('.sln', projectDir);
+      const solutionFile = findUp(['.sln', '.slnx'], projectDir);
       solutionDir = path.resolve(
         solutionFile ? path.dirname(solutionFile) : projectDir,
       );
