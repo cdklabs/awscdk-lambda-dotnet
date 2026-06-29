@@ -67,8 +67,7 @@ export class DotNetFunction extends lambda.Function {
     let runtime = props.runtime;
     if (!runtime) {
       const toolsRuntime = lambdaToolsDefaults?.['function-runtime'] as
-        | string
-        | undefined;
+        string | undefined;
       if (
         toolsRuntime &&
         (toolsRuntime.startsWith('dotnet') ||
