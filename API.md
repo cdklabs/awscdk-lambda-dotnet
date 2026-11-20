@@ -4,6 +4,8 @@
 
 ### DotNetFunction <a name="DotNetFunction" id="@aws-cdk/aws-lambda-dotnet.DotNetFunction"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable, aws-cdk-lib.IResource, aws-cdk-lib.aws_lambda.IFunction, aws-cdk-lib.aws_ec2.IConnectable, aws-cdk-lib.aws_iam.IGrantable, aws-cdk-lib.aws_ec2.IClientVpnConnectionHandler
+
 A .NET Lambda function.
 
 #### Initializers <a name="Initializers" id="@aws-cdk/aws-lambda-dotnet.DotNetFunction.Initializer"></a>
